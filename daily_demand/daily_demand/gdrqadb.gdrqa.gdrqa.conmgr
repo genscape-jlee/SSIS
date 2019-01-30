@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gdrqadb.gdrqa.gdrqa"
+  DTS:DTSID="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="server=gdrqadb;uid=gdrqa;Dsn=gdrqa;database=gdrqa;port=5444;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;socket=4096;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;optimizer=0;ksqo=1;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;cancelasfreestmt=0;extrasystableprefixes=dd_;lfconversion=1;updatablecursors=1;disallowpremature=0;trueisminus1=0;bi=0;byteaaslongvarbinary=0;useserversideprepare=1;lowercaseidentifier=0;gssauthusegss=0;xaopt=1;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAAwXK/CfyaeNX00MB40nhIyAAAAAASAAACgAAAAEAAAAH6/lBVSIL7rVyM+9tVIKRtwAAAAIHKXtF7JbRzyflAJmRY7Ba/UnN9DpQxwHBuaeuHIhswS1/99KzX1+6Px6wvlyrOBHvNRJKBBPHLJs82bwJ9+OjOFvn/6XSykNStP6uhUd6lwRzznX3Pvojb1D0XcpxWCjqV/ZHFeha5s7yi5HzUZ9hQAAAD2JpQLvXr9+8YobOV8vwTdIaRpjg==</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

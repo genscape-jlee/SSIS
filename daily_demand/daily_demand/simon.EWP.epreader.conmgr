@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="simon.EWP.epreader"
+  DTS:DTSID="{35F7D1CE-98DA-4B1F-B175-C2012E057432}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=simon;User ID=epreader;Initial Catalog=EWP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAABHIyQLV4q2z4lKCqcO3tAaAAAAAASAAACgAAAAEAAAACc+PdMNFXA2/6ywffCBCP94AAAAiZfmLdmC1fOMElEj9cVEhn2q493Ww0G+MklxA1nZgvDVh+EH5AqHz4bPhsahUx38suaasuli8scfSJGeTJ7B8/JsQ2eSwDIkvnTbP8ev+SvPooUWZyjGF1JcLDAsMz4ZcnMB8JE7ptFj/K0MfACXUPltOZzPWA4uFAAAABoGWTcjd0W/NsHRyhO+Gb+BvcCL</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

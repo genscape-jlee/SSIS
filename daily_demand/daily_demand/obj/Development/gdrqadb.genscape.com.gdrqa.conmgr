@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gdrqadb.genscape.com.gdrqa"
+  DTS:DTSID="{D0E5D343-19B6-4950-994F-AA4739CEB985}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=gdrqadb.genscape.com;User ID=gdrqa;Provider=PGNP.1;Persist Security Info=True;Extended Properties=&quot;PORT=5444;SSL=allow;&quot;;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAACFD1YomJ8d43QDyhxd5r1MAAAAAASAAACgAAAAEAAAAKLrkc/SRf+tBi5k9X9iD9l4AAAApnRZ47AqIH9y1Hus0y0jlWc10nIthhkwxWB8aKoIQ78D2AGl1HNTxjfB83P1HcnL6whO6Wb28Om/4m8A+IeJO1HMixjAcW+htaVaNPE1VdQtpHAyIfaO/fCwc1oMpiuG31pRn5jsGSJ51OdWGjs6l9NYAPQugTdsFAAAADxNtS3sESJjlyKzMaHEWQnuIP/s</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

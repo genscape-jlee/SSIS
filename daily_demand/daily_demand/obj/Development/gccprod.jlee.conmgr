@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gccprod.jlee"
+  DTS:DTSID="{8D4B3E72-3DFF-4A28-BE4F-5D2DB0CFFD80}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=jlee;Dsn=gccprod;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAAKUtMEUYAeonwuiHfR6wwCAAAAAASAAACgAAAAEAAAAFNfYpiO/cfhxF2/9NDP/y+AAAAAV/KiBQVExYVgFYw5LjokHihXvicwKLY6St8TjZPePFxXJ6WwzguNQypf9K7M9neC9KjX3KrpZZK4QTxrV90wew1uXeEWU49RkyAZvS6z7wR/z6X1JYHpSdHtGmA/I+s8UhVBnkkSTscUtHOYyeQN8G3ihIpDnZKGlSgy3wy/axcUAAAAEsQSsW8atNYaLEy5an9p+zzlp5M=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

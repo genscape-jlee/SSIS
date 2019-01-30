@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="gdrprd.gdrprd"
+  DTS:DTSID="{FF91445F-83A1-4753-9B88-D9BBC899A0E2}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=gdrprd;Dsn=gdrprd;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAACvCAtbEb6c4QnOJTAUw1WsAAAAAASAAACgAAAAEAAAAI0rBGux30aeDJYpfpDr3OJwAAAAQTVTuFZFM81JyowVQtZQxbKo4rRxsM7kg02O6kbSZDSb7aal6u0XfHVUDn17osOCbUPfEosE1uWeb82T0DFBJw/byc9IjN4RQbNJeZ1gXZx+Jd8kgfYVoXP3r2+6ZcNdbz6cMrfbxVbrDFJzH1eNzRQAAAAxPXkSnbHCR3fQVppTlcSdd+VAGw==</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

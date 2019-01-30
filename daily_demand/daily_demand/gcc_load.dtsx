@@ -1,0 +1,1754 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/29/2019 4:05:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USRJLEEW101M"
+  DTS:CreatorName="GENSCAPE\jlee"
+  DTS:DTSID="{AA7CEA0F-840F-4225-AB65-2FF74F5A88FA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="gcc_load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{691C2EC4-5437-4880-BF95-241309A7DFAA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
+      DTS:ObjectName="gdrqadb.gdrqa.gdrqa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=gdrqadb;uid=gdrqa;Dsn=gdrqa;database=gdrqa;port=5444;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;socket=4096;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;optimizer=0;ksqo=1;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;cancelasfreestmt=0;extrasystableprefixes=dd_;lfconversion=1;updatablecursors=1;disallowpremature=0;trueisminus1=0;bi=0;byteaaslongvarbinary=0;useserversideprepare=1;lowercaseidentifier=0;gssauthusegss=0;xaopt=1;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACZVZs0ZY+0XniuEcn1m6e7AAAAAASAAACgAAAAEAAAAJcOCW2yoTo0cqCbrRq34esQAAAAzU4QoWjyezXb0YkKYNoFvhQAAADD2kTzaYDjWcBdcWtyI88D7KZdBQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[simon.epreader]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{E0F27A71-6A33-4EEB-9899-47BB5015FC10}"
+      DTS:ObjectName="simon.epreader">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=epreader;Dsn=simon;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADAqu5ltG0JCgNaw4rBSrLdAAAAAASAAACgAAAAEAAAADO9mHLKrZBI4j7FqdQAAzIYAAAACjkAmGw2SP6rDktedoegtxWkak9F5b4ZFAAAAEgCOmoN0yJAccN5heurpm8lBfTB</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EWP"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{697EC248-23AA-4AF0-8143-06A502814B46}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EWP"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\EWP\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input].Columns[area]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="area"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[area]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="13"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]"
+                      name="c_area"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[area]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EWP\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">gasestimate.load</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows inserted per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EWP\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  connectionManagerRefId="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[gdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="gdate"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[estdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="estdate"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[hour]"
+                      cachedDataType="numeric"
+                      cachedName="hour"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[hour]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[esthour]"
+                      cachedDataType="numeric"
+                      cachedName="esthour"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[load]"
+                      cachedDataType="r4"
+                      cachedName="load"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[load]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[time_stamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="time_stamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[estimated]"
+                      cachedDataType="i4"
+                      cachedName="estimated"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_area]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="c_area"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      dataType="wstr"
+                      length="16"
+                      name="area" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      dataType="dbTimeStamp"
+                      name="gdate" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      dataType="dbTimeStamp"
+                      name="estdate" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      dataType="numeric"
+                      name="hour"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      dataType="numeric"
+                      name="esthour"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      dataType="r8"
+                      name="load" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      name="time_stamp" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      dataType="wstr"
+                      length="1"
+                      name="estimated" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[area]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      length="16"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hour]"
+                      name="hour"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[esthour]"
+                      name="esthour"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[load]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estimated]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      length="1"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estimated]"
+                      name="estimated" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EWP\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select 'CAISO' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (22503)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all 
+select 'CAPGE' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (22504)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'CASCE' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (22505)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'CASDGE' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (22506)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all--MISO comes in GW so it needs to be converted to MW
+select 'MISO' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value*1000 as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (6958)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'NYISO' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (4264)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_SOUTHC' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47482)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_WEST' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47483)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_FARWEST' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47478)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_NORTHC' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47480)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47484)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_NORTH' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47479)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_COAST' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47476)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_SOUTHER' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47481)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ERCOT_EAST' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (47477)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'ISONE' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (3412)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_AEP' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (5534)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_ATSI' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (54679)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_DAY' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (5535)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_DEOK' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (59472)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_DUQ' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (5897)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_DOM' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (6004)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_E' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (4336)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_NI' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (6150)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())
+union all
+select 'PJM_W' area ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)gdate,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime)estdate,
+cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) hour,cast(substring(CONVERT(VARCHAR(19), dateentered, 120),12,2) as numeric) esthour,
+value as "load", getdate() as time_stamp,null as estimated
+from tblData a where sensorid in (6148)
+and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(date, getDate())</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EWP\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[simon.epreader]"
+                  connectionManagerRefId="Package.ConnectionManagers[simon.epreader]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      length="13"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[hour]"
+                      name="hour"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]"
+                      name="esthour"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[load]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]"
+                      name="estimated" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="area" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      dataType="dbTimeStamp"
+                      name="gdate" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      dataType="dbTimeStamp"
+                      name="estdate" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      dataType="numeric"
+                      name="hour"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      dataType="numeric"
+                      name="esthour"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      dataType="r4"
+                      name="load" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      name="time_stamp" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      dataType="i4"
+                      name="estimated" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      length="13"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[hour]"
+                      name="hour"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[esthour]"
+                      name="esthour"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[load]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[estimated]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[estimated]"
+                      name="estimated" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\EWP.Paths[Data Conversion Output]"
+              endId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\EWP.Paths[ODBC Source Output]"
+              endId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BFBD4A63-F905-4350-A695-3D44A5CAC1E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
+          SQLTask:SqlStatementSource="delete from gasestimate.load where gdate &gt;= current_date - '1 day'::interval" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GCC"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8623B135-7FF2-498B-A794-F234D9B83473}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GCC"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GCC\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\GCC\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GCC\Data Conversion.Inputs[Data Conversion Input].Columns[area]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="area"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[area]" />
+                    <inputColumn
+                      refId="Package\GCC\Data Conversion.Inputs[Data Conversion Input].Columns[estimated]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="estimated"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GCC\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\GCC\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]"
+                      name="c_area"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[area]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_estimated]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_estimated]"
+                      name="c_estimated"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GCC\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\GCC\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GCC\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GCC\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GCC\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">gasestimate.load</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows inserted per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GCC\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  connectionManagerRefId="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[gdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="gdate"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[estdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="estdate"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[hour]"
+                      cachedDataType="numeric"
+                      cachedName="hour"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[hour]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[esthour]"
+                      cachedDataType="numeric"
+                      cachedName="esthour"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[load]"
+                      cachedDataType="r8"
+                      cachedName="load"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[load]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[time_stamp]"
+                      cachedDataType="dbDate"
+                      cachedName="time_stamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_area]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="c_area"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_area]" />
+                    <inputColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_estimated]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="c_estimated"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      lineageId="Package\GCC\Data Conversion.Outputs[Data Conversion Output].Columns[c_estimated]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      dataType="wstr"
+                      length="16"
+                      name="area" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      dataType="dbTimeStamp"
+                      name="gdate" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      dataType="dbTimeStamp"
+                      name="estdate" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      dataType="numeric"
+                      name="hour"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      dataType="numeric"
+                      name="esthour"
+                      precision="2" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      dataType="r8"
+                      name="load" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      name="time_stamp" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      dataType="wstr"
+                      length="1"
+                      name="estimated" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[area]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[area]"
+                      length="16"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[gdate]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estdate]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[hour]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[hour]"
+                      name="hour"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[esthour]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[esthour]"
+                      name="esthour"
+                      precision="2" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[load]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[load]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[time_stamp]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[time_stamp]"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estimated]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[estimated]"
+                      length="1"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[estimated]"
+                      name="estimated" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GCC\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GCC\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select distinct 'DUKE'::character varying as area,to_char(eff_date,'yyyy-mm-dd')::timestamp without time zone  gdate,to_char(eff_date,'yyyy-mm-dd')::timestamp without time zone as estdate,
+to_char(eff_date,'HH24')::numeric as hour,to_char(eff_date,'HH24')::numeric as esthour,value::double precision as "load", current_date as time_stamp,null::character varying as estimated
+from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= current_date-1 and eff_date &lt; current_date</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GCC\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="{8D4B3E72-3DFF-4A28-BE4F-5D2DB0CFFD80}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[gccprod.jlee]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      length="255"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[hour]"
+                      name="hour"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[esthour]"
+                      name="esthour"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[load]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      length="255"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].Columns[estimated]"
+                      name="estimated" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="area" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      dataType="dbTimeStamp"
+                      name="gdate" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      dataType="dbTimeStamp"
+                      name="estdate" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      dataType="numeric"
+                      name="hour"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      dataType="numeric"
+                      name="esthour"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      dataType="r8"
+                      name="load" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      dataType="dbDate"
+                      name="time_stamp" />
+                    <externalMetadataColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="estimated" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[area]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[area]"
+                      length="255"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[gdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[gdate]"
+                      name="gdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[estdate]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estdate]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[estdate]"
+                      name="estdate" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[hour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[hour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[hour]"
+                      name="hour"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[esthour]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[esthour]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[esthour]"
+                      name="esthour"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[load]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[load]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[load]"
+                      name="load" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[time_stamp]"
+                      dataType="dbDate"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[time_stamp]"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[time_stamp]"
+                      name="time_stamp" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[estimated]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\GCC\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[estimated]"
+                      length="255"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[estimated]"
+                      name="estimated" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GCC\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GCC.Paths[Data Conversion Output]"
+              endId="Package\GCC\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\GCC\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\GCC.Paths[ODBC Source Output]"
+              endId="Package\GCC\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\GCC\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8375420F-3E9E-430C-B605-91FD5FD7324A}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GCC"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0B49EA7-7773-4FA2-A4D5-11FF6D58033E}"
+      DTS:From="Package\GCC"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EWP" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="99,42"
+          Id="Package\GCC"
+          TopLeft="443.5,226.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="417,95" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="495.75,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.5"
+              Start="0,0"
+              End="0,82">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,35.1953125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="100,42"
+          Id="Package\EWP"
+          TopLeft="442,402" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="492.5,268.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,133.5"
+              Start="0,0"
+              End="0,126">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\GCC">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\GCC\ODBC Source"
+          TopLeft="407,32" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\GCC\Data Conversion"
+          TopLeft="261,225" />
+        <EdgeLayout
+          Id="Package\GCC.Paths[ODBC Source Output]"
+          TopLeft="478,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-139,151"
+              Start="0,0"
+              End="-139,143.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.5"
+                    Point2="0,75.5"
+                    Point3="-4,75.5" />
+                  <mssgle:LineSegment
+                    End="-135,75.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-135,75.5"
+                    Point2="-139,75.5"
+                    Point3="-139,79.5" />
+                  <mssgle:LineSegment
+                    End="-139,143.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\GCC\ODBC Destination"
+          TopLeft="515,410" />
+        <EdgeLayout
+          Id="Package\GCC.Paths[Data Conversion Output]"
+          TopLeft="339,267">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="257.5,143"
+              Start="0,0"
+              End="257.5,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.5"
+                    Point2="0,71.5"
+                    Point3="4,71.5" />
+                  <mssgle:LineSegment
+                    End="253.5,71.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="253.5,71.5"
+                    Point2="257.5,71.5"
+                    Point3="257.5,75.5" />
+                  <mssgle:LineSegment
+                    End="257.5,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\GCC\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\EWP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\EWP\ODBC Source"
+          TopLeft="179,92" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\EWP\Data Conversion"
+          TopLeft="370,220" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\EWP\ODBC Destination"
+          TopLeft="583,315" />
+        <EdgeLayout
+          Id="Package\EWP.Paths[ODBC Source Output]"
+          TopLeft="250,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198,86"
+              Start="0,0"
+              End="198,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="4,43" />
+                  <mssgle:LineSegment
+                    End="194,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194,43"
+                    Point2="198,43"
+                    Point3="198,47" />
+                  <mssgle:LineSegment
+                    End="198,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EWP.Paths[Data Conversion Output]"
+          TopLeft="448,262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216.5,53"
+              Start="0,0"
+              End="216.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="212.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.5,26.5"
+                    Point2="216.5,26.5"
+                    Point3="216.5,30.5" />
+                  <mssgle:LineSegment
+                    End="216.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EWP\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
