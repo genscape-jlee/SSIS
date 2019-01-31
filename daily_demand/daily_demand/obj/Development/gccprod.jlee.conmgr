@@ -8,7 +8,7 @@
       DTS:ConnectionString="uid=jlee;Dsn=gccprod;">
       <DTS:Password
         DTS:Name="pwd"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAAKUtMEUYAeonwuiHfR6wwCAAAAAASAAACgAAAAEAAAAFNfYpiO/cfhxF2/9NDP/y+AAAAAV/KiBQVExYVgFYw5LjokHihXvicwKLY6St8TjZPePFxXJ6WwzguNQypf9K7M9neC9KjX3KrpZZK4QTxrV90wew1uXeEWU49RkyAZvS6z7wR/z6X1JYHpSdHtGmA/I+s8UhVBnkkSTscUtHOYyeQN8G3ihIpDnZKGlSgy3wy/axcUAAAAEsQSsW8atNYaLEy5an9p+zzlp5M=</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAAVHwK8fSCp/k43HQyVe1bDAAAAAASAAACgAAAAEAAAAN1EO6kmfKm5Xk2hpWLEyzaAAAAAc1c/JZw/3PpcZTQ8cr5JnuF/7rb8jtYwZ5cVOzhrAY76L7spG8Hou5XeSwDiK6O0L7l9E1IlAnT6r0sALuxgiWjfFHZbx3MByGTBBR8nanp33yTXxbWM+I04AyttX8h0Dtg0+2u5yXu0FGgVXjpBG3btpBttWiKkjANbsHy+tXkUAAAAqHv2fLGeAblHtqZnmpzP3F76VqU=</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

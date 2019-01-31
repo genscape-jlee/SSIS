@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="gcc_load"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{691C2EC4-5437-4880-BF95-241309A7DFAA}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{E7DF2D6F-64D5-40AE-94D4-94A9D163FC1C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACZVZs0ZY+0XniuEcn1m6e7AAAAAASAAACgAAAAEAAAAJcOCW2yoTo0cqCbrRq34esQAAAAzU4QoWjyezXb0YkKYNoFvhQAAADD2kTzaYDjWcBdcWtyI88D7KZdBQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACl3FdF2KHcMiR7I0Jcvtx/AAAAAASAAACgAAAAEAAAAKSv7VluJMQ5914up4Z0NK4QAAAAxhOeAwnuhNGf5RG00bB18hQAAABpSQbvQqHMOs+YSLcR8fccT/hwTA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADAqu5ltG0JCgNaw4rBSrLdAAAAAASAAACgAAAAEAAAADO9mHLKrZBI4j7FqdQAAzIYAAAACjkAmGw2SP6rDktedoegtxWkak9F5b4ZFAAAAEgCOmoN0yJAccN5heurpm8lBfTB</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADz0FDIRVzm9BMh8uv/0fS7AAAAAASAAACgAAAAEAAAAIiRfpvUUi7xarzWXTDivr8YAAAAgmPv/L0GLA6yXld9pHMxTRwifagfx2EiFAAAABKxxpq3bQKWvLZ/HAv26+MFx4r0</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -812,7 +812,7 @@ and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(da
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
-          SQLTask:SqlStatementSource="delete from gasestimate.load where gdate &gt;= current_date - '1 day'::interval" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="call gasestimate.delete_t_load();" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1470,8 +1470,7 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
       DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\GCC"
-      DTS:Value="2" />
+      DTS:To="Package\GCC" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -1492,15 +1491,19 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="99,42"
-          Id="Package\GCC"
-          TopLeft="443.5,226.5" />
+          Size="100,42"
+          Id="Package\EWP"
+          TopLeft="442,402" />
         <NodeLayout
           Size="163,42"
           Id="Package\Execute SQL Task"
           TopLeft="417,95" />
+        <NodeLayout
+          Size="99,42"
+          Id="Package\GCC"
+          TopLeft="443.5,226.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="495.75,137">
@@ -1520,15 +1523,9 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.304453125,35.1953125,50.60890625,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="100,42"
-          Id="Package\EWP"
-          TopLeft="442,402" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="492.5,268.5">
@@ -1555,6 +1552,108 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\EWP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\EWP\ODBC Source"
+          TopLeft="179,92" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\EWP\ODBC Destination"
+          TopLeft="583,315" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\EWP\Data Conversion"
+          TopLeft="370,220" />
+        <EdgeLayout
+          Id="Package\EWP.Paths[ODBC Source Output]"
+          TopLeft="250,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198,86"
+              Start="0,0"
+              End="198,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="4,43" />
+                  <mssgle:LineSegment
+                    End="194,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194,43"
+                    Point2="198,43"
+                    Point3="198,47" />
+                  <mssgle:LineSegment
+                    End="198,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EWP.Paths[Data Conversion Output]"
+          TopLeft="448,262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216.5,53"
+              Start="0,0"
+              End="216.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="212.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.5,26.5"
+                    Point2="216.5,26.5"
+                    Point3="216.5,30.5" />
+                  <mssgle:LineSegment
+                    End="216.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EWP\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\GCC">
     <LayoutInfo>
       <GraphLayout
@@ -1563,6 +1662,10 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
           Size="142,42"
           Id="Package\GCC\ODBC Source"
           TopLeft="407,32" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\GCC\ODBC Destination"
+          TopLeft="515,410" />
         <NodeLayout
           Size="156,42"
           Id="Package\GCC\Data Conversion"
@@ -1601,10 +1704,6 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\GCC\ODBC Destination"
-          TopLeft="515,410" />
         <EdgeLayout
           Id="Package\GCC.Paths[Data Conversion Output]"
           TopLeft="339,267">
@@ -1644,104 +1743,6 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\GCC\ODBC Destination">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\EWP">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="142,42"
-          Id="Package\EWP\ODBC Source"
-          TopLeft="179,92" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\EWP\Data Conversion"
-          TopLeft="370,220" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\EWP\ODBC Destination"
-          TopLeft="583,315" />
-        <EdgeLayout
-          Id="Package\EWP.Paths[ODBC Source Output]"
-          TopLeft="250,134">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="198,86"
-              Start="0,0"
-              End="198,78.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39"
-                    Point2="0,43"
-                    Point3="4,43" />
-                  <mssgle:LineSegment
-                    End="194,43" />
-                  <mssgle:CubicBezierSegment
-                    Point1="194,43"
-                    Point2="198,43"
-                    Point3="198,47" />
-                  <mssgle:LineSegment
-                    End="198,78.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\EWP.Paths[Data Conversion Output]"
-          TopLeft="448,262">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="216.5,53"
-              Start="0,0"
-              End="216.5,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.5"
-                    Point2="0,26.5"
-                    Point3="4,26.5" />
-                  <mssgle:LineSegment
-                    End="212.5,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="212.5,26.5"
-                    Point2="216.5,26.5"
-                    Point3="216.5,30.5" />
-                  <mssgle:LineSegment
-                    End="216.5,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\EWP\ODBC Destination">
     <Properties>
       <Property>
         <Name>TableInfoObjectType</Name>
