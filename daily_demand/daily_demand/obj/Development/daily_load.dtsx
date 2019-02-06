@@ -1,18 +1,18 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="1/29/2019 4:05:07 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="USRJLEEW101M"
   DTS:CreatorName="GENSCAPE\jlee"
-  DTS:DTSID="{AA7CEA0F-840F-4225-AB65-2FF74F5A88FA}"
+  DTS:DTSID="{E9ECE490-E637-4C14-B320-3CEB9D5FB034}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="gcc_load"
+  DTS:ObjectName="daily_load"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{E7DF2D6F-64D5-40AE-94D4-94A9D163FC1C}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{5E27C11C-4E90-46D1-BCF5-ADF121885843}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACl3FdF2KHcMiR7I0Jcvtx/AAAAAASAAACgAAAAEAAAAKSv7VluJMQ5914up4Z0NK4QAAAAxhOeAwnuhNGf5RG00bB18hQAAABpSQbvQqHMOs+YSLcR8fccT/hwTA</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAlU3h+aH1eVI+vyxqdjyyJAAAAAASAAACgAAAAEAAAAFHK4f2eV5QzSeg1BP4j1IgQAAAAiYxR88s7ng1sxnvYSbnOjBQAAADLAzfj1LlTywNIpv7IdEtuPsS7tw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,13 +42,30 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADz0FDIRVzm9BMh8uv/0fS7AAAAAASAAACgAAAAEAAAAIiRfpvUUi7xarzWXTDivr8YAAAAgmPv/L0GLA6yXld9pHMxTRwifagfx2EiFAAAABKxxpq3bQKWvLZ/HAv26+MFx4r0</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABFdpk5ZdMn+6xN5C/sKZO1AAAAAASAAACgAAAAEAAAAOeljWMNm/E5c8I5W987i+EYAAAAp5FvNWli+8nQdaYaD3FmzH253yc3/Ij1FAAAAFeG2g/K4uEo5mt3lpunw+GLAA8G</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete the latest data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BFBD4A63-F905-4350-A695-3D44A5CAC1E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete the latest data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
+          SQLTask:SqlStatementSource="call gasestimate.delete_t_load();" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\EWP"
       DTS:CreationName="Microsoft.Pipeline"
@@ -799,23 +816,6 @@ and dateentered &gt;= CONVERT(date, getDate()-1) and dateentered &lt; CONVERT(da
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Execute SQL Task"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{BFBD4A63-F905-4350-A695-3D44A5CAC1E6}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
-          SQLTask:SqlStatementSource="call gasestimate.delete_t_load();" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\GCC"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -1467,7 +1467,7 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{8375420F-3E9E-430C-B605-91FD5FD7324A}"
-      DTS:From="Package\Execute SQL Task"
+      DTS:From="Package\Delete the latest data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\GCC" />
@@ -1497,27 +1497,39 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
           Id="Package\EWP"
           TopLeft="442,402" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Execute SQL Task"
+          Size="180,42"
+          Id="Package\Delete the latest data"
           TopLeft="417,95" />
         <NodeLayout
           Size="99,42"
           Id="Package\GCC"
-          TopLeft="443.5,226.5" />
+          TopLeft="470.166666666667,245.388888888889" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="495.75,137">
+          TopLeft="507,137">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,89.5"
+              EndConnector="12.6666666666667,108.388888888889"
               Start="0,0"
-              End="0,82">
+              End="12.6666666666667,100.888888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82" />
+                    End="0,50.1944444444445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.1944444444445"
+                    Point2="0,54.1944444444445"
+                    Point3="4,54.1944444444445" />
+                  <mssgle:LineSegment
+                    End="8.66666666666674,54.1944444444445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.66666666666674,54.1944444444445"
+                    Point2="12.6666666666667,54.1944444444445"
+                    Point3="12.6666666666667,58.1944444444445" />
+                  <mssgle:LineSegment
+                    End="12.6666666666667,100.888888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1528,18 +1540,30 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="492.5,268.5">
+          TopLeft="519.666666666667,287.388888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,133.5"
+              EndConnector="-27.6666666666667,114.611111111111"
               Start="0,0"
-              End="0,126">
+              End="-27.6666666666667,107.111111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,126" />
+                    End="0,53.3055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.3055555555555"
+                    Point2="0,57.3055555555555"
+                    Point3="-4,57.3055555555555" />
+                  <mssgle:LineSegment
+                    End="-23.6666666666667,57.3055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.6666666666667,57.3055555555555"
+                    Point2="-27.6666666666667,57.3055555555555"
+                    Point3="-27.6666666666667,61.3055555555555" />
+                  <mssgle:LineSegment
+                    End="-27.6666666666667,107.111111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1555,7 +1579,7 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
     design-time-name="Package\EWP">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="142,42"
           Id="Package\EWP\ODBC Source"
@@ -1599,9 +1623,7 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1635,9 +1657,7 @@ from ts1.fact_01 where rc_id = 252396 and item_id = 83820 and eff_date &gt;= cur
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

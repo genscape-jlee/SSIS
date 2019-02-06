@@ -1,0 +1,778 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/6/2019 9:22:22 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="USRJLEEW101M"
+  DTS:CreatorName="GENSCAPE\jlee"
+  DTS:DTSID="{5E31BDB2-10F3-476F-99DF-D1F4D3BE41C3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="daily_prices_fuels"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{0B43A106-6574-47F9-AB4A-7E172F0A5E9F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[gdrqadb.gdrqa.gdrqa 1]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{6DCCB90D-9AFD-4E2E-8A0E-C5A33ABC7CE0}"
+      DTS:ObjectName="gdrqadb.gdrqa.gdrqa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=gdrqadb;uid=gdrqa;Dsn=gdrqa;database=gdrqa;port=5444;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;socket=4096;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;optimizer=0;ksqo=1;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;cancelasfreestmt=0;extrasystableprefixes=dd_;lfconversion=1;updatablecursors=1;disallowpremature=0;trueisminus1=0;bi=0;byteaaslongvarbinary=0;useserversideprepare=1;lowercaseidentifier=0;gssauthusegss=0;xaopt=1;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACNJ7Vz+aqtdOMR+DOZI6mdAAAAAASAAACgAAAAEAAAAPx8SA3bfkZ22EhhjWGjGC8QAAAA4kUf3tcVbb8CBBMDVetFXxQAAADIEgVwgcmWRC5BfcoqrD9zSBNmkg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[simon.epreader]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{E0F27A71-6A33-4EEB-9899-47BB5015FC10}"
+      DTS:ObjectName="simon.epreader">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="uid=epreader;Dsn=simon;">
+          <DTS:Password
+            DTS:Name="pwd"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACQVEraOp3uBWPFIeTfcxVgAAAAAASAAACgAAAAEAAAAEMcIWJGCYMh8HDv0bHecG4YAAAASGs0nbCspJ9kQWiYeTfZaABKejS8ejXxFAAAAJT+zMy7O/bEGYh41CwZuivbyzrZ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete the latest data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0bf7f2a3-65ff-4502-b93e-eca6e3be8865}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete the latest data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}"
+          SQLTask:SqlStatementSource="select gasestimate.delete_tables ('prices.tbldata','to_char(dateentered,''yyyy-mm-dd'')',to_char(current_date-2,'yyyy-mm-dd'));" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EWP"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{41ebabb9-cbe1-4fce-8384-5a4c0926aae4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EWP"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\EWP\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input].Columns[description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="description"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
+                      name="c_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EWP\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">prices.tbldata</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows inserted per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EWP\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[sensorid]"
+                      cachedDataType="i4"
+                      cachedName="sensorid"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[dateentered]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="dateentered"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[status]"
+                      cachedDataType="i4"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_description]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="c_description"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]" />
+                    <inputColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[value]"
+                      cachedDataType="i4"
+                      cachedName="value"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      dataType="i4"
+                      name="sensorid" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      dataType="i4"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      dataType="dbTimeStamp"
+                      name="dateentered" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="100"
+                      name="description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      length="100"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EWP\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select sensorid, cast(value as int) as value, dateentered, status, description from (
+select a.*,'Oil Price'description from tblData a where sensorid in (10846 ,30024)
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select a.*,'Hydro'description from (select sensorid, avg(value) as value,cast(concat(substring(CONVERT(VARCHAR(13), dateentered, 120),1,13),':00:00') as datetime)dateentered,0 as status
+from tbldata where sensorid in (30430,46737,49792,49799,52922,40496)
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+group by sensorid,cast(concat(substring(CONVERT(VARCHAR(13), dateentered, 120),1,13),':00:00')as datetime))
+a where dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select a.*,'Wind'description from (select sensorid, avg(value) as value,cast(concat(substring(CONVERT(VARCHAR(13), dateentered, 120),1,13),':00:00') as datetime)dateentered,0 as status
+from tbldata where sensorid in (16958,45987,71072,17260,31242,59650)--,78766,92099)
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+group by sensorid,cast(concat(substring(CONVERT(VARCHAR(13), dateentered, 120),1,13),':00:00')as datetime))
+a --where dateentered &gt;= CONVERT(VARCHAR(10), GETDATE()-2, 121) and dateentered &lt; CONVERT(VARCHAR(10), GETDATE(), 121)
+union all
+select a.*,null description from tblData a where sensorid in (49794, 49789, 49790, 49791,49795,49796, 49797, 49798)
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select a.*,null description from tblData a where sensorid in (65569,65570,65571,65572,65573,65574,49789,49790,49791,--49792,49793,
+49794,49795,49796,49797,49798,64523,64729,64730,64731,64732,64733,64734,64735,64736,64737)
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select sensorid,avg(value) as value ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime) as dateetnered,0, 'TETCO'
+from tbldata where sensorid = 4630 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+group by sensorid, CONVERT(VARCHAR(10), dateentered, 121)--TETCO
+union all
+select sensorid,avg(value) as value ,cast(CONVERT(VARCHAR(10), dateentered, 121) as datetime) as dateetnered,0, 'AGT'
+from tbldata where sensorid = 16998 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+group by sensorid, CONVERT(VARCHAR(10), dateentered, 121) 
+union all
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'MISO_Z1_Load' as description
+from tbldata where sensorid = 75876 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'MISO_Z3_Load' as description
+from tbldata where sensorid = 75920 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select sensorid,avg(value),dateentered, status, description from (
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'SPP_Load' as description
+from tbldata where sensorid = 71071 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate()) )a
+group by sensorid,dateentered, status, description
+union all
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'MISO_Z2_Load' as description
+from tbldata where sensorid = 75898 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'MISO_Z4_Load' as description
+from tbldata where sensorid = 75942 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+union all
+select sensorid,value as value ,cast(CONVERT(VARCHAR(15), dateentered, 121) as datetime) as dateentered,0 as status, 'MISO_Z6_Load' as description
+from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())
+--order by 2 desc--AGT
+)a</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EWP\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[simon.epreader]"
+                  connectionManagerRefId="Package.ConnectionManagers[simon.epreader]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      length="12"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      dataType="i4"
+                      name="sensorid" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      dataType="i4"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      dataType="dbTimeStamp"
+                      name="dateentered" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      dataType="i4"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      length="12"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\EWP.Paths[Data Conversion Output]"
+              endId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\EWP.Paths[ODBC Source Output]"
+              endId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FE488C6-ADE6-4B8A-894D-4A06E1AD965E}"
+      DTS:From="Package\Delete the latest data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EWP" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Delete the latest data"
+          TopLeft="61,60" />
+        <NodeLayout
+          Size="100,42"
+          Id="Package\EWP"
+          TopLeft="242,207" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="151,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="141,105"
+              Start="0,0"
+              End="141,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.5"
+                    Point2="0,52.5"
+                    Point3="4,52.5" />
+                  <mssgle:LineSegment
+                    End="137,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="137,52.5"
+                    Point2="141,52.5"
+                    Point3="141,56.5" />
+                  <mssgle:LineSegment
+                    End="141,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\EWP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\EWP\ODBC Source"
+          TopLeft="180,92" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\EWP\ODBC Destination"
+          TopLeft="583,315" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\EWP\Data Conversion"
+          TopLeft="385,199" />
+        <EdgeLayout
+          Id="Package\EWP.Paths[ODBC Source Output]"
+          TopLeft="251,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="212,65"
+              Start="0,0"
+              End="212,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="4,32.5" />
+                  <mssgle:LineSegment
+                    End="208,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="208,32.5"
+                    Point2="212,32.5"
+                    Point3="212,36.5" />
+                  <mssgle:LineSegment
+                    End="212,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EWP.Paths[Data Conversion Output]"
+          TopLeft="463,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.5,74"
+              Start="0,0"
+              End="201.5,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="197.5,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="197.5,37"
+                    Point2="201.5,37"
+                    Point3="201.5,41" />
+                  <mssgle:LineSegment
+                    End="201.5,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EWP\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
