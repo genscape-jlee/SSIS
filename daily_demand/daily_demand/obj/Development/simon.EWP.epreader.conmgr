@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=simon;User ID=epreader;Initial Catalog=EWP;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAA+tGK+riK9+AQfYithnF3ZAAAAAASAAACgAAAAEAAAAAj8LpZelKsMcTKHcKKCehp4AAAAr2KRz/UFm+HYtvZnwQpx1CN8Ik30H9d/exUcgU2YI5XP087J1Jfqh3ikINnwA9ELTnyTYliy26KW/0IoPjbMxhYvivkh9hu8KqBX+hHxs95gbPQU9HszUoHCCUQU8PvxHADWpPMssPMYwdnysc1HYMxv0Zs69mnyFAAAAJQdoEwSn/Ph3+6ZKA314ar6moG2</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAACAAAAAAADZgAAwAAAABAAAAB/cdJdzDHT64Kw8PlV4nmFAAAAAASAAACgAAAAEAAAAHlojyGT9OkkJe6iXKH/dGV4AAAA52sYlqmgODuxLs8Po1ejOEwPaJuOrGA1sZIC7ea8jZRhbGUJnyuNWxuFHLow5woaoBRefFcRV1H2VMeHvPtQyVDHdG8K7Up1mtWKYSTh1wsSnMCvPprU7XN9CowBSAepKAJo3newRL/I4LL1DxUBUukdyn1jptKFFAAAACQ/bKsxo4cV5rtuSPrgMSlfe7WF</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

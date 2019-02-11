@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="daily_prices_fuels"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{0B43A106-6574-47F9-AB4A-7E172F0A5E9F}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{9662BAF7-FC73-48AF-965E-A947B5D0B96A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACNJ7Vz+aqtdOMR+DOZI6mdAAAAAASAAACgAAAAEAAAAPx8SA3bfkZ22EhhjWGjGC8QAAAA4kUf3tcVbb8CBBMDVetFXxQAAADIEgVwgcmWRC5BfcoqrD9zSBNmkg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADZgIrLsQzQ/YDclJ7xr3C1AAAAAASAAACgAAAAEAAAANefkUrfdZM/LRGWj6EIt0IQAAAAuY6zfRkd+nYSNVT6M3VxUBQAAAAjUQPGgS+3RFxdzbVla65TfkPiFg</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACQVEraOp3uBWPFIeTfcxVgAAAAAASAAACgAAAAEAAAAEMcIWJGCYMh8HDv0bHecG4YAAAASGs0nbCspJ9kQWiYeTfZaABKejS8ejXxFAAAAJT+zMy7O/bEGYh41CwZuivbyzrZ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE/r1uVv6ZUagosd2HwKCAgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACM0deEwMph1nYQ7TQEloY0AAAAAASAAACgAAAAEAAAAKGHpncbHXQk/xKdma44Fr8YAAAAvb5JJKe4wH/06LAdJb/IhfjTQr8dGjf4FAAAAHmRmmr/G1jWcHHx2PZ3omYr9EEl</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -50,30 +50,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Delete the latest data"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0bf7f2a3-65ff-4502-b93e-eca6e3be8865}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Delete the latest data"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}"
-          SQLTask:SqlStatementSource="select gasestimate.delete_tables ('prices.tbldata','to_char(dateentered,''yyyy-mm-dd'')',to_char(current_date-2,'yyyy-mm-dd'));" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\EWP"
+      DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{41ebabb9-cbe1-4fce-8384-5a4c0926aae4}"
+      DTS:DTSID="{D80ED35F-947E-42AB-B016-69D223C479A0}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="EWP"
+      DTS:ObjectName="Data Flow Task"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -81,85 +64,7 @@
           version="1">
           <components>
             <component
-              refId="Package\EWP\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\EWP\Data Conversion.Inputs[Data Conversion Input].Columns[description]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="12"
-                      cachedName="description"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="12"
-                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
-                      name="c_description"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\EWP\ODBC Destination"
+              refId="Package\Data Flow Task\ODBC Destination"
               componentClassID="Attunity.SSISODBCDst"
               contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
               description="ODBC Destination"
@@ -218,7 +123,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\EWP\ODBC Destination.Connections[ODBCConnection]"
+                  refId="Package\Data Flow Task\ODBC Destination.Connections[ODBCConnection]"
                   connectionManagerID="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}:external"
                   connectionManagerRefId="Project.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
                   description="The ODBC runtime connection"
@@ -226,7 +131,7 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+                  refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
@@ -234,57 +139,56 @@
                   truncationRowDisposition="FailComponent">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[sensorid]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[sensorid]"
                       cachedDataType="i4"
                       cachedName="sensorid"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]" />
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]" />
                     <inputColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[dateentered]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[value]"
+                      cachedDataType="r4"
+                      cachedName="value"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[value]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[dateentered]"
                       cachedDataType="dbTimeStamp"
                       cachedName="dateentered"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]" />
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]" />
                     <inputColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[status]"
-                      cachedDataType="i4"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[status]"
+                      cachedDataType="i2"
                       cachedName="status"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]" />
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[status]" />
                     <inputColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_description]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="c_description"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
-                      lineageId="Package\EWP\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]" />
-                    <inputColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].Columns[value]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].Columns[description]"
                       cachedDataType="i4"
-                      cachedName="value"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]" />
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[description]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
                       dataType="i4"
                       name="sensorid" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
                       dataType="i4"
                       name="value" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
                       dataType="dbTimeStamp"
                       name="dateentered" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
                       dataType="i2"
                       name="status" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      refId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
                       dataType="wstr"
                       length="100"
                       name="description" />
@@ -293,51 +197,51 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output]"
                   isErrorOut="true"
                   name="ODBC Destination Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
                       name="sensorid" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
                       name="value" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
                       name="dateentered" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
                       dataType="i2"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
                       name="status" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
                       dataType="wstr"
-                      externalMetadataColumnId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
                       length="100"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
                       name="description" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\EWP\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -346,7 +250,928 @@
               </outputs>
             </component>
             <component
-              refId="Package\EWP\ODBC Source"
+              refId="Package\Data Flow Task\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select 26 as sensorid,value,dateentered,status, null description from tblData a where sensorid in (71346)
+--and dateentered &gt;= CONVERT(VARCHAR(10), GETDATE()-1, 121)  and dateentered &lt; CONVERT(VARCHAR(10), GETDATE(), 121) 
+and dateentered &gt;= CONVERT(date, getDate()-2) and dateentered &lt; CONVERT(date, getDate())</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[simon.epreader]"
+                  connectionManagerRefId="Package.ConnectionManagers[simon.epreader]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      dataType="i4"
+                      name="sensorid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      dataType="r4"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      dataType="dbTimeStamp"
+                      name="dateentered" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="i4"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[ODBC Source Output]"
+              endId="Package\Data Flow Task\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Data Flow Task\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete the latest data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0bf7f2a3-65ff-4502-b93e-eca6e3be8865}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete the latest data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}"
+          SQLTask:SqlStatementSource="begin;&#xA;&#xA;select gasestimate.delete_tables ('prices.tbldata','to_char(dateentered,''yyyy-mm-dd'')',to_char(current_date-2,'yyyy-mm-dd'));&#xA;&#xA;select gasestimate.delete_tables ('gasestimate.tbldata','to_char(dateentered,''yyyy-mm-dd'')',to_char(current_date-4,'yyyy-mm-dd'));&#xA;&#xA;end;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\gasestimate_tbldata"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5575ebef-41e0-45c2-a78f-71968b5dc7e5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="gasestimate_tbldata"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\gasestimate_tbldata\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\gasestimate_tbldata\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\gasestimate_tbldata\Data Conversion.Inputs[Data Conversion Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\gasestimate_tbldata\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\gasestimate_tbldata\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">gasestimate.tbldata</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows inserted per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\gasestimate_tbldata\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[SensorID]"
+                      cachedDataType="i4"
+                      cachedName="SensorID"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[SensorID]" />
+                    <inputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[DateEntered]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateEntered"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[DateEntered]" />
+                    <inputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[Status]"
+                      cachedDataType="i2"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[Value]"
+                      cachedDataType="r4"
+                      cachedName="Value"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Value]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      dataType="i4"
+                      name="sensorid" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      dataType="r8"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      dataType="dbTimeStamp"
+                      name="dateentered" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\gasestimate_tbldata\prices and NRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Source"
+              name="prices and NRC"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select * from tblData where sensorid in (6204, 6205, 6206, 6207, 40319, 40320, 47123,4631, 10809, 17011, 17015)
+and dateentered &gt;= CONVERT(date, getDate()-4) and dateentered &lt; CONVERT(date, getDate())
+union all
+select a.* from tblData a inner join tblsensor b on a.sensorid = b.sensorid where scriptname = 'DAQ_NRC'
+and a.dateentered &gt;= CONVERT(date, getDate()-4) and a.dateentered &lt; CONVERT(date, getDate())</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\gasestimate_tbldata\prices and NRC.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[simon.epreader]"
+                  connectionManagerRefId="Package.ConnectionManagers[simon.epreader]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[SensorID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[SensorID]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[SensorID]"
+                      name="SensorID" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Value]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Value]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Value]"
+                      name="Value" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[DateEntered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[DateEntered]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[DateEntered]"
+                      name="DateEntered" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Status]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].Columns[Status]"
+                      name="Status" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[SensorID]"
+                      dataType="i4"
+                      name="SensorID" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Value]"
+                      dataType="r4"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[DateEntered]"
+                      dataType="dbTimeStamp"
+                      name="DateEntered" />
+                    <externalMetadataColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Status]"
+                      dataType="i2"
+                      name="Status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[SensorID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[SensorID]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[SensorID]"
+                      name="SensorID" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[Value]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Value]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[Value]"
+                      name="Value" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[DateEntered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[DateEntered]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[DateEntered]"
+                      name="DateEntered" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[Status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output].ExternalColumns[Status]"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\gasestimate_tbldata.Paths[Data Conversion Output]"
+              endId="Package\gasestimate_tbldata\ODBC Destination.Inputs[ODBC Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\gasestimate_tbldata\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\gasestimate_tbldata.Paths[ODBC Source Output]"
+              endId="Package\gasestimate_tbldata\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\gasestimate_tbldata\prices and NRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\prices_tbldata"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{41ebabb9-cbe1-4fce-8384-5a4c0926aae4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="prices_tbldata"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\prices_tbldata\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\prices_tbldata\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\prices_tbldata\Data Conversion.Inputs[Data Conversion Input].Columns[description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="description"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\prices_tbldata\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]"
+                      name="c_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\prices_tbldata\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\prices_tbldata\ODBC Destination"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
+              description="ODBC Destination"
+              name="ODBC Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for inserting data. Possible values are 'Batch' or 'Row by row'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Destination table"
+                  expressionType="Notify"
+                  name="TableName">prices.tbldata</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows inserted per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of rows inserted under the same transaction."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\prices_tbldata\ODBC Destination.Connections[ODBCConnection]"
+                  connectionManagerID="{ADEC9BE5-1AB4-4F37-919F-1089D7EFB442}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[gdrqadb.gdrqa.gdrqa]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ODBC Destination Input"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[sensorid]"
+                      cachedDataType="i4"
+                      cachedName="sensorid"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]" />
+                    <inputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[dateentered]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="dateentered"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]" />
+                    <inputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[status]"
+                      cachedDataType="i4"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[c_description]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="c_description"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      lineageId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Output].Columns[c_description]" />
+                    <inputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].Columns[value]"
+                      cachedDataType="i4"
+                      cachedName="value"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[value]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      dataType="i4"
+                      name="sensorid" />
+                    <externalMetadataColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      dataType="i4"
+                      name="value" />
+                    <externalMetadataColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      dataType="dbTimeStamp"
+                      name="dateentered" />
+                    <externalMetadataColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="100"
+                      name="description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Destination Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[sensorid]"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[value]"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[value]"
+                      name="value" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[dateentered]"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[dateentered]"
+                      name="dateentered" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[status]"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input].ExternalColumns[description]"
+                      length="100"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\prices_tbldata\ODBC Destination.Outputs[ODBC Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\prices_tbldata\ODBC Source"
               componentClassID="Attunity.SSISODBCSrc"
               contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;6"
               description="ODBC Source"
@@ -466,7 +1291,7 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
               </properties>
               <connections>
                 <connection
-                  refId="Package\EWP\ODBC Source.Connections[ODBCConnection]"
+                  refId="Package\prices_tbldata\ODBC Source.Connections[ODBCConnection]"
                   connectionManagerID="Package.ConnectionManagers[simon.epreader]"
                   connectionManagerRefId="Package.ConnectionManagers[simon.epreader]"
                   description="The ODBC runtime connection"
@@ -474,64 +1299,64 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
               </connections>
               <outputs>
                 <output
-                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]"
+                  refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output]"
                   errorRowDisposition="FailComponent"
                   name="ODBC Source Output"
                   truncationRowDisposition="FailComponent">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[sensorid]"
                       name="sensorid" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[value]"
                       name="value" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[dateentered]"
                       name="dateentered" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[status]"
                       name="status" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
                       codePage="1252"
                       dataType="str"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
                       length="12"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].Columns[description]"
                       name="description" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
                       dataType="i4"
                       name="sensorid" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
                       dataType="i4"
                       name="value" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
                       dataType="dbTimeStamp"
                       name="dateentered" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
                       dataType="i4"
                       name="status" />
                     <externalMetadataColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
                       codePage="1252"
                       dataType="str"
                       length="12"
@@ -539,52 +1364,52 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output]"
+                  refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output]"
                   isErrorOut="true"
                   name="ODBC Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[sensorid]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[sensorid]"
                       name="sensorid" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[value]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[value]"
                       name="value" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[dateentered]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[dateentered]"
                       name="dateentered" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[status]"
                       name="status" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
                       codePage="1252"
                       dataType="str"
-                      externalMetadataColumnId="Package\EWP\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      externalMetadataColumnId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[description]"
                       length="12"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[description]"
                       name="description" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\EWP\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -595,15 +1420,15 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
           </components>
           <paths>
             <path
-              refId="Package\EWP.Paths[Data Conversion Output]"
-              endId="Package\EWP\ODBC Destination.Inputs[ODBC Destination Input]"
+              refId="Package\prices_tbldata.Paths[Data Conversion Output]"
+              endId="Package\prices_tbldata\ODBC Destination.Inputs[ODBC Destination Input]"
               name="Data Conversion Output"
-              startId="Package\EWP\Data Conversion.Outputs[Data Conversion Output]" />
+              startId="Package\prices_tbldata\Data Conversion.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\EWP.Paths[ODBC Source Output]"
-              endId="Package\EWP\Data Conversion.Inputs[Data Conversion Input]"
+              refId="Package\prices_tbldata.Paths[ODBC Source Output]"
+              endId="Package\prices_tbldata\Data Conversion.Inputs[Data Conversion Input]"
               name="ODBC Source Output"
-              startId="Package\EWP\ODBC Source.Outputs[ODBC Source Output]" />
+              startId="Package\prices_tbldata\ODBC Source.Outputs[ODBC Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -617,7 +1442,23 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
       DTS:From="Package\Delete the latest data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\EWP" />
+      DTS:To="Package\prices_tbldata" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{66EC9669-3BF9-4AB5-B2A7-FBF92F9FA1B6}"
+      DTS:From="Package\prices_tbldata"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\gasestimate_tbldata" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3949D65D-5EBC-430B-A8E8-ED5908C7F49F}"
+      DTS:From="Package\gasestimate_tbldata"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -630,41 +1471,117 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="180,42"
           Id="Package\Delete the latest data"
-          TopLeft="61,60" />
+          TopLeft="62,61" />
         <NodeLayout
-          Size="100,42"
-          Id="Package\EWP"
+          Size="145,42"
+          Id="Package\prices_tbldata"
           TopLeft="242,207" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="151,102">
+          TopLeft="152,103">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="141,105"
+              EndConnector="162.5,104"
               Start="0,0"
-              End="141,97.5">
+              End="162.5,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5" />
+                    End="0,48" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48.5"
-                    Point2="0,52.5"
-                    Point3="4,52.5" />
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="4,52" />
                   <mssgle:LineSegment
-                    End="137,52.5" />
+                    End="158.5,52" />
                   <mssgle:CubicBezierSegment
-                    Point1="137,52.5"
-                    Point2="141,52.5"
-                    Point3="141,56.5" />
+                    Point1="158.5,52"
+                    Point2="162.5,52"
+                    Point3="162.5,56" />
                   <mssgle:LineSegment
-                    End="141,97.5" />
+                    End="162.5,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\gasestimate_tbldata"
+          TopLeft="373,329" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="314.5,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.5,80"
+              Start="0,0"
+              End="145.5,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="141.5,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="141.5,40"
+                    Point2="145.5,40"
+                    Point3="145.5,44" />
+                  <mssgle:LineSegment
+                    End="145.5,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="555,414" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="460,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="170.5,43"
+              Start="0,0"
+              End="170.5,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="166.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="166.5,21.5"
+                    Point2="170.5,21.5"
+                    Point3="170.5,25.5" />
+                  <mssgle:LineSegment
+                    End="170.5,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -677,24 +1594,24 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\EWP">
+    design-time-name="Package\prices_tbldata">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="142,42"
-          Id="Package\EWP\ODBC Source"
+          Id="Package\prices_tbldata\ODBC Source"
           TopLeft="180,92" />
         <NodeLayout
           Size="163,42"
-          Id="Package\EWP\ODBC Destination"
+          Id="Package\prices_tbldata\ODBC Destination"
           TopLeft="583,315" />
         <NodeLayout
           Size="156,42"
-          Id="Package\EWP\Data Conversion"
+          Id="Package\prices_tbldata\Data Conversion"
           TopLeft="385,199" />
         <EdgeLayout
-          Id="Package\EWP.Paths[ODBC Source Output]"
+          Id="Package\prices_tbldata.Paths[ODBC Source Output]"
           TopLeft="251,134">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -728,7 +1645,7 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\EWP.Paths[Data Conversion Output]"
+          Id="Package\prices_tbldata.Paths[Data Conversion Output]"
           TopLeft="463,241">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -765,7 +1682,165 @@ from tbldata where sensorid = 75986 and dateentered &gt;= CONVERT(date, getDate(
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\EWP\ODBC Destination">
+    design-time-name="Package\prices_tbldata\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\gasestimate_tbldata">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\gasestimate_tbldata\ODBC Destination"
+          TopLeft="583,315" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\gasestimate_tbldata\Data Conversion"
+          TopLeft="385,199" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\gasestimate_tbldata\prices and NRC"
+          TopLeft="180,92" />
+        <EdgeLayout
+          Id="Package\gasestimate_tbldata.Paths[ODBC Source Output]"
+          TopLeft="255.5,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="207.5,65"
+              Start="0,0"
+              End="207.5,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="4,32.5" />
+                  <mssgle:LineSegment
+                    End="203.5,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="203.5,32.5"
+                    Point2="207.5,32.5"
+                    Point3="207.5,36.5" />
+                  <mssgle:LineSegment
+                    End="207.5,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\gasestimate_tbldata.Paths[Data Conversion Output]"
+          TopLeft="463,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.5,74"
+              Start="0,0"
+              End="201.5,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="197.5,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="197.5,37"
+                    Point2="201.5,37"
+                    Point3="201.5,41" />
+                  <mssgle:LineSegment
+                    End="201.5,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\gasestimate_tbldata\ODBC Destination">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task\ODBC Source"
+          TopLeft="232,121" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\ODBC Destination"
+          TopLeft="363,274" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ODBC Source Output]"
+          TopLeft="303,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="141.5,111"
+              Start="0,0"
+              End="141.5,103.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.5"
+                    Point2="0,55.5"
+                    Point3="4,55.5" />
+                  <mssgle:LineSegment
+                    End="137.5,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="137.5,55.5"
+                    Point2="141.5,55.5"
+                    Point3="141.5,59.5" />
+                  <mssgle:LineSegment
+                    End="141.5,103.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ODBC Destination">
     <Properties>
       <Property>
         <Name>TableInfoObjectType</Name>
